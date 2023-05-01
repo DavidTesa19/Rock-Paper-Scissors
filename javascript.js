@@ -1,69 +1,78 @@
-// let rounds = 5;
-// let playerScore = 0;
-// let computerScore = 0;
+let playerChoice;
+let computerChoice;
 
-// function playRound() {
+let playerScore = 0;
+let computerScore = 0;
 
-//     function getComputerChoice(num1) {
-//         num1 = Math.floor(Math.random() * 3) + 1;
-//         return num1;
-//     }
-    
-//     let x = getComputerChoice();
-//     console.log(x);
-//     const objects = [];
-//     objects.push("rock", "paper", "scissors");
-    
-    
-//     let choice = +prompt("choose between 1 and 3");
-    
-//     function calculateResults() {
-//         if(choice == x + 1 || choice == x -2) {
-//             console.log("You win! " + objects[choice-1] + " beats " + objects[x - 1]);
-//             playerScore++;
-//         }
-//         else if(choice == x) {
-//             console.log("Draw! " + objects[choice-1] + "equals " + objects[x - 1]);
-//         }
-//         else {
-//             console.log("You lose! " + objects[choice-1] + " beats " + objects[x - 1]);
-//             computerScore++;
-//         }
-//         console.log("human " + playerScore + " Robot " + computerScore)
-//         checkScore();
-//     }
-    
-//     function checkScore() {
-//         if(playerScore >= rounds) {
-//             console.log("You beated computer");
-//         }
-//         else if(computerScore >= rounds) {
-//             console.log("Computer beated you!")
-//         }
-//         else {
-//             playRound();
-//         }
-//     }
-    
-//     calculateResults();
-// }
+const numOfRounds = 5;
+let gameEnded = false;
 
-// playRound();
+const result = document.querySelector(".result");
+const h1 = result.querySelector("h1");
+let h2 = result.querySelector("h2");
 
-// let num = 0;
+let humanScoreText = result.querySelector("#human-score");
+let computerScoreText = result.querySelector("#computer-score");
 
-// while(num <= 100) {
-//     num = +prompt("Enter number greater than 100: ");
-// }
+const btnDiv = document.querySelector(".options");
+const btn = btnDiv.querySelectorAll("button");
+let btnArray = [...btn];
 
-let n = prompt("How many numbers to take prime numbers from: ");
+const resetDiv = document.querySelector(".reset");
+const resetButton = resetDiv.querySelector("button");
 
-for(i = 2; i <= n; i++) {
-    let prime = true;
-    for(divider = 2; divider < i; divider++) {
-        if(i % divider == 0) {
-            prime = false;
-        }
+function playRound() {
+    if(gameEnded) return;
+
+    console.log(playerChoice);
+    computerChoice = parseInt(Math.floor(Math.random()*3)+1);
+    console.log(computerChoice);
+    console.log(btnArray[computerChoice-1].textContent);
+    h2.textContent = btnArray[computerChoice-1].textContent;
+
+    if(playerChoice == computerChoice + 1 || playerChoice == computerChoice - 2) {
+        result.querySelector("h1").textContent = "You Won";
+        playerScore++;
+        humanScoreText.textContent = "Human: " + playerScore;
+    } else if (playerChoice == computerChoice) {
+        h1.textContent = "Draw";
+    } else {
+        h1.textContent = "You Lost";
+        computerScore++;
+        computerScoreText.textContent = "Robot: " + computerScore;
     }
-    if(prime) console.log(i);
+
+
+
+    checkResults();
 }
+
+function checkResults() {
+
+
+    if(playerScore >= numOfRounds) {
+        h1.textContent = "Humans Won";
+        gameEnded = true;
+    } else if (computerScore >= 5) {
+        h1.textContent = "Robots Won";
+        gameEnded = true;
+    }
+}
+
+
+
+btn.forEach((button) => {
+    
+    button.addEventListener("click", () => {
+        playerChoice = +button.id;
+        playRound();
+    });
+});
+
+resetButton.addEventListener("click", () => {
+    computerScore = 0;
+    playerScore = 0;
+    humanScoreText.textContent = "Human: " + playerScore;
+    computerScoreText.textContent = "Robot: " + computerScore;
+    gameEnded = false;
+});
