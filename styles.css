@@ -1,0 +1,99 @@
+body {
+    background-color: rgb(18, 18, 24);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.8)), url(./images/bg.jpg);
+}
+
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.box {
+    background-color: #1F262A;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    align-self: center;
+    border: 5px solid black;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+h3 {
+    margin: 5px;
+}
+
+h1 {
+    margin: 5px;
+}
+
+h2 {
+    margin: 15px;
+}
+
+.upper-container {
+    background-color: #2A3439;
+    margin: 20px;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.option-container {
+    background-color: #A8A9AD;
+    width: 300px;
+    height: 300px;
+    margin: 20px 0;
+}
+
+.result > * {
+    color: aliceblue;
+}
+
+
+
+.result{
+    background-color: #838996;
+    margin: 20px;
+    display: flex;
+    padding: 20px 0;
+    align-items: center;
+    flex-direction: column;
+    align-self: stretch;
+    justify-content: center;
+    flex: 1;
+}
+
+.options {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 50px;
+}
+
+button {
+    width: 200px;
+    height: 60px;
+    background-color: #A8A9AD;
+    font-size: 20px;
+    color: #1F262A;
+}
+
+button:hover {
+    background-color: #cbcbce;
+}
+
+.reset > button {
+    flex: 0 1 800px;
+    background-color: #838996;
+}
+
+.reset > button:hover {
+    flex: 0 1 800px;
+    background-color: #acb1bb;
+}
+
+.reset {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
