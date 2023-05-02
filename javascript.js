@@ -11,8 +11,9 @@ const result = document.querySelector(".result");
 const h1 = result.querySelector("h1");
 let h2 = result.querySelector("h2");
 
-let humanScoreText = result.querySelector("#human-score");
-let computerScoreText = result.querySelector("#computer-score");
+const score2 = document.querySelector(".score");
+let humanScoreText = score2.querySelector("#human-score");
+let computerScoreText = score2.querySelector("#computer-score");
 
 const btnDiv = document.querySelector(".options");
 const btn = btnDiv.querySelectorAll("button");
@@ -21,14 +22,27 @@ let btnArray = [...btn];
 const resetDiv = document.querySelector(".reset");
 const resetButton = resetDiv.querySelector("button");
 
+let img1 = document.querySelector("#player");
+let img2 = document.querySelector("#computer");
+
+
+const rock = "./images/rock.png";
+const paper = "./images/paper.png";
+const scissors = "./images/scissors.png";
+
+let items = [];
+items.push(rock, paper, scissors);
+console.log(items);
+
 function playRound() {
     if(gameEnded) return;
 
-    console.log(playerChoice);
     computerChoice = parseInt(Math.floor(Math.random()*3)+1);
-    console.log(computerChoice);
-    console.log(btnArray[computerChoice-1].textContent);
-    h2.textContent = btnArray[computerChoice-1].textContent;
+
+    h2.textContent = "Robot choosed: " + btnArray[computerChoice-1].textContent;
+
+    img1.src = items[playerChoice - 1];
+    img2.src = items[computerChoice - 1];
 
     if(playerChoice == computerChoice + 1 || playerChoice == computerChoice - 2) {
         result.querySelector("h1").textContent = "You Won";
@@ -64,7 +78,7 @@ function checkResults() {
 btn.forEach((button) => {
     
     button.addEventListener("click", () => {
-        playerChoice = +button.id;
+        playerChoice = +button.value;
         playRound();
     });
 });

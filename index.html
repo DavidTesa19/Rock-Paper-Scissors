@@ -9,34 +9,44 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="title">Rock, Paper, Scissors</div>
     <div class="box">
         <div class="upper-container">
 
             <div class="option-container">
-
+                <img class="item" id="player" src="./images/rock.png" alt="player item">
             </div>
             <div class="result">
-                <h1></h1>
+                <h1>Choose Item</h1>
                 <h2>Robot Choice</h2>
-                <h3 id="human-score">Human: 0<h3>
-                <h3 id="computer-score">Robot: 0<h3>
+                
             </div>
             <div class="option-container">
-                
+                <img class="item" id="computer" src="./images/paper.png" alt="robot item">
             </div>
         </div>
-                
-        <div class="options">
-            <button id="1">Rock</button>
-            <button id="2">Paper</button>
-            <button id="3">Scissors</button>
+        <div class="score">
+            <h3 id="human-score">Human: 0</h3>
+            <h3 id="score-text">Score</h3>
+            <h3 id="computer-score">Robot: 0</h3>    
+
+        </div>
+        <div class="buttons">
+            <div class="options">
+                <button value="1" id="one">Rock</button>
+                <button value="2" id="two">Paper</button>
+                <button value="3" id="three">Scissors</button>
+            </div>
+
+            <div class="reset">
+                <button>Reset</button>
+            </div>
+
         </div>
         
         
         
-        <div class="reset">
-            <button>Reset</button>
-        </div>
+        
     </div>
 </body>
 </html>
